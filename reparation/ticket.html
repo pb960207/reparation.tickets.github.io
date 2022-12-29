@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>报修单测试网页</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap启用插入 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+    <!-- CSS -->
+    <style>
+        .container-ticket {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: rgb(42, 165, 159);
+            width: 100%;
+        }
+        
+        .container-ticket h3 {
+            font-size: 30px;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .btn {
+            width: 100%;
+            font-size: 20px;
+            margin: 20px 0px 20px 0px;
+            background-color: rgb(6, 117, 119);
+            color: rgb(255, 255, 255);
+            border-radius: 20px;
+            transition: 1s;
+        }
+        
+        .btn:hover {
+            background-color: rgb(178, 224, 84);
+            color: black;
+        }
+        
+        input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-ticket">
+        <h3>我要报修</h3>
+
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <form id="myForm">
+                    <div class="row">
+
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="name" name="name" placeholder="姓名" type="text" required>
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="location" name="location" placeholder="地点" type="text" required>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="article" name="article" placeholder="损坏物品" type="text" required>
+                        </div>
+
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="supplier" name="supplier" placeholder="所属供应商" type="text" required>
+                        </div>
+                    </div>
+                    <br>    
+                    <textarea class="form-control" id="comments" name="comments" placeholder="问题描述" rows="5"></textarea>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <button class="btn " type="submit" id="submitButton">提交报修单</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <img src=logo.png>
+                </form>
+            <div class="col-sm-4">
+
+            </div>    
+        
+
+        </div>
+
+    </div>
+    <!-- Java -->
+    <script>
+        // 获取报修单输入的值
+
+        function getValues(){
+            var name=document.getElementById("name")
+            var location=document.getElementById("location")
+            var article=document.getElementById("article")
+            var supplier=document.getElementById("supplier")
+            var comments=document.getElementById("comments")
+
+            var rowData={
+                name:name.value,
+                location:location.value,
+                article:article.value,
+                supplier:supplier.value,
+                comments:comments.value
+            }
+
+            // 上传报修单输入的值
+            google.script.run.addData(rowData);
+            document.getElementById("myForm").reset();
+            alert("提交成功，真不戳");
+
+
+        }
+        document.getElementById("submitButton").addEventListener("click",getValues);
+
+    </script>
+</body>
+
+</html>
